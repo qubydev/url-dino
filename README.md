@@ -10,8 +10,7 @@ URL Dino is a fun little experiment that brings the iconic offline Chrome Dino g
 
 👉 **Play it here:** [https://url-dino.vercel.app](https://url-dino.vercel.app)
 
-Press **Space** to start and jump.  
-Your score and highest score will update in real time.
+Press **Space** to start and jump.
 
 ---
 
