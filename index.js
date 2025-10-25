@@ -14,12 +14,9 @@ document.addEventListener("DOMContentLoaded", function () {
     const MIN_SEP = 10;
     const MAX_SEP = 25;
     const OBSTACLES = {
-        "„": 2,
-        "¬": 2,
-        "◞": 2,
-        "◟": 2,
-        "◡": 2,
-        "∴": 2,
+        "⡄": { height: 2, weight: 0.51 },
+        "∴": { height: 2, weight: 0.48 },
+        "⋮": { height: 3, weight: 0.01 },
     };
 
     // global vars
@@ -42,6 +39,17 @@ document.addEventListener("DOMContentLoaded", function () {
     const hscore = document.getElementById('hscore');
 
     // functions
+    function getWeightedRandom(obstacles) {
+        const keys = Object.keys(obstacles);
+        const totalWeight = keys.reduce((sum, key) => sum + obstacles[key].weight, 0);
+        let random = Math.random() * totalWeight;
+
+        for (const key of keys) {
+            random -= obstacles[key].weight;
+            if (random <= 0) return key;
+        }
+    }
+
     function addScore(score) {
         scores.push(score);
         const newScoreRow = document.createElement('div');
@@ -61,7 +69,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     function putObstacle() {
         if (obstacleAfter === 0) {
-            const obstacle = Object.keys(OBSTACLES)[Math.floor(Math.random() * Object.keys(OBSTACLES).length)];
+            const obstacle = getWeightedRandom(OBSTACLES);
             SCREEN = SCREEN.slice(0, WIDTH - 1) + obstacle;
             obstacleAfter = getRandomObstacleSep();
         } else {
@@ -86,7 +94,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
         // game logic
         if (OBSTACLES[SCREEN[playerPos.y]]) {
-            if (OBSTACLES[SCREEN[playerPos.y]] >= playerPos.x) {
+            if (OBSTACLES[SCREEN[playerPos.y]].height >= playerPos.x) {
                 // game over
                 addScore(score);
                 stop();
