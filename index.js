@@ -11,8 +11,8 @@ document.addEventListener("DOMContentLoaded", function () {
         3: "⠂",
         4: "⠁",
     };
-    const MIN_SEP = 5;
-    const MAX_SEP = WIDTH;
+    const MIN_SEP = 10;
+    const MAX_SEP = 25;
     const OBSTACLES = {
         "„": 2,
         "¬": 2,
@@ -46,7 +46,7 @@ document.addEventListener("DOMContentLoaded", function () {
         scores.push(score);
         const newScoreRow = document.createElement('div');
         newScoreRow.textContent = `Score: ${score}`;
-        scoreboard.appendChild(newScoreRow);
+        scoreboard.prepend(newScoreRow);
 
         if (score > heighestScore) {
             heighestScore = score;
