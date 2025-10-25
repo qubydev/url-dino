@@ -6,6 +6,7 @@ body {
 .wrapper {
     min-height: 100dvh;
     padding: 1rem;
+    box-sizing: border-box;
 }
 
 .info {
