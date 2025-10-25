@@ -18,5 +18,3 @@ Your score and highest score will update in real time.
 ## 🧩 How It Works
 
 URL Dino dynamically generates an URL fragment made up of ASCII characters to represent the player (the Dino) and obstacles. Using JavaScript, the game continuously updates this fragment frame by frame, creating the illusion of motion.
-
----
