@@ -37,6 +37,7 @@ document.addEventListener("DOMContentLoaded", function () {
     // dom
     const scoreboard = document.getElementById('scoreboard');
     const hscore = document.getElementById('hscore');
+    const wrapper = document.querySelector('.wrapper');
 
     // functions
     function getWeightedRandom(obstacles) {
@@ -192,11 +193,11 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 
     // phone
-    document.addEventListener('touchstart', (event) => {
+    wrapper.addEventListener('touchstart', (event) => {
         event.preventDefault();
         keys["Tap"] = true;
     }, { passive: false });
-    document.addEventListener('touchend', (event) => {
+    wrapper.addEventListener('touchend', (event) => {
         keys["Tap"] = false;
     });
 
@@ -211,7 +212,7 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 
     // phone
-    document.addEventListener('touchstart', (event) => {
+    wrapper.addEventListener('touchstart', (event) => {
         event.preventDefault();
         if (running) return;
 
