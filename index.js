@@ -134,7 +134,7 @@ document.addEventListener("DOMContentLoaded", function () {
     function handleKeys() {
 
         // space
-        if (keys["Space"]) {
+        if (keys["Space"] || keys["Tap"]) {
             if (jumping === 0) {
                 jump();
             }
@@ -190,6 +190,17 @@ document.addEventListener("DOMContentLoaded", function () {
             keys[code] = false;
         }
     });
+
+    // phone
+    document.addEventListener('touchstart', (event) => {
+        event.preventDefault();
+        keys["Tap"] = true;
+    }, { passive: false });
+    document.addEventListener('touchend', (event) => {
+        keys["Tap"] = false;
+    });
+
+    // start
     document.addEventListener('keydown', (event) => {
         if (running) return;
 
@@ -198,6 +209,15 @@ document.addEventListener("DOMContentLoaded", function () {
             start();
         }
     });
+
+    // phone
+    document.addEventListener('touchstart', (event) => {
+        event.preventDefault();
+        if (running) return;
+
+        stop();
+        start();
+    }, { passive: false });
 
 
     // start up
